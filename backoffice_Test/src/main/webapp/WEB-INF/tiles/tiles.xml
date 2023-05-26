@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <!DOCTYPE tiles-definitions PUBLIC
+      "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+      "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
+<tiles-definitions>
+	<!-- tiles layout 적용 정의부 -->
+	<definition name="layout"
+		template="/WEB-INF/tiles/layout/layout.jsp">
+		<put-attribute name="header"
+			value="/WEB-INF/tiles/tile/header.jsp" />
+		<put-attribute name="sidebar"
+			value="/WEB-INF/tiles/tile/sidebar.jsp" />
+		<put-attribute name="content" value="" />
+		<put-attribute name="footer"
+			value="/WEB-INF/tiles/tile/footer.jsp" />
+		<put-attribute name="footer-menu"
+			value="/WEB-INF/tiles/tile/footer-menu.jsp" />
+	</definition>
+	<!-- tiles 적용 제외 부분 정의부 -->
+	<definition name="empty"
+		template="/WEB-INF/tiles/layout/empty.jsp">
+		<put-attribute name="content" value="" />
+	</definition>
+	<!-- 타일즈 제외 선언부를 제외한 나머지는 모두 타일즈로 적용 됨 -->
+	<definition name="*/*" extends="layout">
+		<put-attribute name="content"
+			value="/WEB-INF/views/{1}/{2}.jsp" />
+	</definition>
+	<!-- 타일즈 제외 선언부 -->
+	<definition name="logInfo/login" extends="empty">
+		<put-attribute name="content"
+			value="/WEB-INF/views/logInfo/login.jsp" />
+	</definition>
+	<definition name="logInfo/memberJoin" extends="empty">
+		<put-attribute name="content"
+			value="/WEB-INF/views/logInfo/memberJoin.jsp" />
+	</definition>
+	
+	<!-- tiles 적용할 파일 선언부 -->
+	<!-- Home Page -->
+	<definition name="/home" extends="layout">
+		<put-attribute name="content" value="/WEB-INF/views/home.jsp"></put-attribute>
+	</definition>
+	
+</tiles-definitions>
