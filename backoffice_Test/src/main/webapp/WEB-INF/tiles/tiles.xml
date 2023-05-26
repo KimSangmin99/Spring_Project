@@ -42,5 +42,9 @@
 	<definition name="/home" extends="layout">
 		<put-attribute name="content" value="/WEB-INF/views/home.jsp"></put-attribute>
 	</definition>
+	<!-- Home Page -->
+	<definition name="/testPage/testpage" extends="layout">
+		<put-attribute name="content" value="/WEB-INF/views/testPage/testpage.jsp"></put-attribute>
+	</definition>
 	
 </tiles-definitions>
