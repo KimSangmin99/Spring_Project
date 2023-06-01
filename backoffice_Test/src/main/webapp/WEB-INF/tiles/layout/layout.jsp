@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
 <html>
 <head>
@@ -27,15 +28,14 @@
 		<tiles:insertAttribute name="header" />
 	</div>
 	<div id="wrapper">
-		<div id="sidebar">
-			<tiles:insertAttribute name="sidebar" />
-		</div>
-		<div id="content">
-			<tiles:insertAttribute name="content" />
-			<div id="footer">
-				<tiles:insertAttribute name="footer" />
-			</div>
-		</div>
+		<tiles:insertAttribute name="sidebar" />
+		<!-- <div class="content-wrapper"> -->
+		<tiles:insertAttribute name="topbar" />
+		<tiles:insertAttribute name="content" />
+		<!-- </div><!-- content-wrapper -->
 	</div>
+	<tiles:insertAttribute name="footer" />
+	<!-- wrapper -->
+	<tiles:insertAttribute name="footer-menu" />
 </body>
 </html>

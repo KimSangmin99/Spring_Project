@@ -11,6 +11,8 @@
 			value="/WEB-INF/tiles/tile/header.jsp" />
 		<put-attribute name="sidebar"
 			value="/WEB-INF/tiles/tile/sidebar.jsp" />
+		<put-attribute name="topbar"
+			value="/WEB-INF/tiles/tile/topbar.jsp" />
 		<put-attribute name="content" value="" />
 		<put-attribute name="footer"
 			value="/WEB-INF/tiles/tile/footer.jsp" />

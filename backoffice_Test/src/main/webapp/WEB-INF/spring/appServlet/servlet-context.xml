@@ -34,7 +34,21 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-	<context:component-scan base-package="com.zeroday.seapp" />
+	<!-- Mybatis mapper 연동을 위해 작성해야주어야함 -->
+	<beans:bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <beans:property name="dataSource" ref="dataSource" />
+        <beans:property name="mapperLocations" value="classpath:com/zeroday/mapper/mapper_XML/*.xml" />
+    </beans:bean>
+    <!-- SessionFactory vs Session은 무엇일까? -->
+    <beans:bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+        <beans:constructor-arg index="0" ref="sqlSessionFactory" />
+    </beans:bean>
+	
+	
+	<context:component-scan base-package="com.zeroday.seapp.controller" />
+	<context:component-scan base-package="com.zeroday.dao" />
+	<context:component-scan base-package="com.zeroday.service" />
+	<context:component-scan base-package="com.zeroday.vo" />
 	
 	
 	

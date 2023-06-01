@@ -1,7 +1,6 @@
 package com.zeroday.seapp;
 
-import java.text.DateFormat;
-import java.util.Date;
+import java.security.Principal;
 import java.util.Locale;
 
 import org.slf4j.Logger;
@@ -23,17 +22,40 @@ public class HomeController {
 	 * Simply selects the home view to render by returning its name.
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Locale locale, Model model) {
+	public String home(Locale locale, Model model, Principal principal) {
 		logger.info("Welcome home! The client locale is {}.", locale);
+		String userName = "";
 		
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		
-		String formattedDate = dateFormat.format(date);
-		
-		model.addAttribute("serverTime", formattedDate );
-		
+		try{
+			userName = principal.getName();
+		}catch(NullPointerException e){
+			e.printStackTrace();
+		}finally{
+			System.out.println("userName >>>>" + userName);
+		//	System.out.println("principal >>>>>>>>>>>>>"+principal);
+			model.addAttribute("userName",userName);
+		}
 		return "/home";
 	}
+	
+  
+	// 메인 페이지
+	@RequestMapping(value = "home", method = RequestMethod.GET)
+	public String home() {
+		return "/home";
+	}
+	//로그인 페이지
+	@RequestMapping(value = "login", method = RequestMethod.GET)
+	public String login() {
+		System.out.println("로그인 페이지");
+		return "/logInfo/login";
+	}
+	// 회원가입 페이지
+	@RequestMapping(value = "memberJoin", method = RequestMethod.GET)
+	public String memberJoin() {
+		System.out.println("회원가입 페이지");
+		return "/logInfo/memberJoin";
+	}
+	
 	
 }
