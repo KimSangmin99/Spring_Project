@@ -1,0 +1,12 @@
+-- DB 테이블 정보 -- 
+
+DB SCHEMAS : backoffice_se
+
+	- Tables : se_member
+
+		- Columns : se_Id, VARCHAR(20), PK, NN
+		- Columns : se_Password, VARCHAR(20)
+		- Columns : se_Name, VARCHAR(20)
+		- Columns : se_Email, VARCHAR(50)
+		- Columns : seuser_authority, TINYINT(4)
+
