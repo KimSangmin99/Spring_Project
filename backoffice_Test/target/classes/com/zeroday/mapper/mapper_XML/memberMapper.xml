@@ -6,13 +6,13 @@
 <mapper namespace = "com.zeroday.mapper.mapper_XML">
 
 	<!-- 로그인 - 유저 정보 SQL -->
-	<select id = "select_userInfo" resultType="com.zeroday.vo.loginVO">
+	<select id = "select_se_member" resultType="com.zeroday.vo.loginVO">
 		select * from se_member where se_Id=#{se_Id}
 	</select>
 	
 	<!-- 회원가입 - id 중복 체크 -->
 	<select id = "idCheck" resultType="com.zeroday.vo.loginVO">
-		select user_id from se_member where se_Id=#{se_Id}
+		select se_Id from se_member where se_Id=#{se_Id}
 	</select>
 	
 	<!-- 회원가입 - 회원 정보 등록 SQL -->

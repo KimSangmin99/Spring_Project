@@ -1,4 +1,4 @@
-package com.zeroday.seapp;
+package com.zeroday.seapp.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCrypt;

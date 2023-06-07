@@ -19,9 +19,9 @@ public class loginDAOImpl implements loginDAO{
 	//private loginVO loginvo;
 	
 	@Override
-	public loginVO memberConfirm(String user_id) throws SQLException{
+	public loginVO memberConfirm(String se_Id) throws SQLException{
 		
-		return sqlsession.selectOne(NameSpace+".select_userInfo",user_id);
+		return sqlsession.selectOne(NameSpace+".select_se_member",se_Id);
 	}
 	
 	//회원 가입 - 회원 등록
@@ -37,8 +37,8 @@ public class loginDAOImpl implements loginDAO{
 
 	//회원 가입 - id 중복 체크
 	@Override
-	public String idCheckDAO(String user_id) throws SQLException {
-		loginVO idCheck = sqlsession.selectOne(NameSpace+".idCheck",user_id);
+	public String idCheckDAO(String se_Id) throws SQLException {
+		loginVO idCheck = sqlsession.selectOne(NameSpace+".idCheck",se_Id);
 		System.out.println("idCheck >>>>>>>>>>>"+idCheck);
 		if(idCheck == null){
 			return "null";

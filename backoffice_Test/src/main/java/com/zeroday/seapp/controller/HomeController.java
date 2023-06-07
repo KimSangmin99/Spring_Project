@@ -1,4 +1,4 @@
-package com.zeroday.seapp;
+package com.zeroday.seapp.controller;
 
 import java.security.Principal;
 import java.util.Locale;
@@ -29,7 +29,8 @@ public class HomeController {
 		try{
 			userName = principal.getName();
 		}catch(NullPointerException e){
-			e.printStackTrace();
+			userName = "미 로그인";
+			//e.printStackTrace();
 		}finally{
 			System.out.println("userName >>>>" + userName);
 		//	System.out.println("principal >>>>>>>>>>>>>"+principal);
@@ -38,24 +39,20 @@ public class HomeController {
 		return "/home";
 	}
 	
-  
-	// 메인 페이지
-	@RequestMapping(value = "home", method = RequestMethod.GET)
-	public String home() {
+	@RequestMapping(value = "/home", method = RequestMethod.GET)
+	public String homemove(Locale locale, Model model, Principal principal) {
+		String userName = "";
+		
+		try{
+			userName = principal.getName();
+		}catch(NullPointerException e){
+			userName = "미 로그인";
+			//e.printStackTrace();
+		}finally{
+			System.out.println("userName >>>>" + userName);
+		//	System.out.println("principal >>>>>>>>>>>>>"+principal);
+			model.addAttribute("userName",userName);
+		}
 		return "/home";
 	}
-	//로그인 페이지
-	@RequestMapping(value = "login", method = RequestMethod.GET)
-	public String login() {
-		System.out.println("로그인 페이지");
-		return "/logInfo/login";
-	}
-	// 회원가입 페이지
-	@RequestMapping(value = "memberJoin", method = RequestMethod.GET)
-	public String memberJoin() {
-		System.out.println("회원가입 페이지");
-		return "/logInfo/memberJoin";
-	}
-	
-	
 }

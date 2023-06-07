@@ -6,7 +6,10 @@
 	<!-- The definition of the Root Spring Container shared by all Servlets and Filters -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>/WEB-INF/spring/root-context.xml</param-value>
+		<param-value>
+					/WEB-INF/spring/root-context.xml
+					/WEB-INF/spring/Security/security-context.xml
+		</param-value>
 	</context-param>
 	
 	<!-- Creates the Spring Container shared by all Servlets and Filters -->
@@ -20,7 +23,9 @@
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
-			<param-value>/WEB-INF/spring/appServlet/servlet-context.xml</param-value>
+			<!-- 2019-01-19 [Dan]modified -->
+			<param-value>/WEB-INF/spring/appServlet/*.xml</param-value>
+		<!-- 	<param-value>/WEB-INF/spring/appServlet/servlet-context.xml</param-value> -->
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
@@ -29,5 +34,41 @@
 		<servlet-name>appServlet</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
+	
+	<!-- Spring Security -->
+	<!-- 다중 브라우져 접속 방지 -->
+	<listener>
+		<listener-class>org.springframework.security.web.session.HttpSessionEventPublisher</listener-class> 
+	</listener>
+
+	<!-- 모든 요청은 DelegatingFilterProxy를 거침 그래서 이것을 통해 스프링시큐리티 인증 인가 수행 -->
+	<filter>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+	</filter>
+	
+	<filter-mapping>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
+	<filter>
+		<filter-name>encodingFilter</filter-name>
+		<filter-class>
+			org.springframework.web.filter.CharacterEncodingFilter
+		</filter-class>
+		<init-param>
+				<param-name>encoding</param-name>
+				<param-value>UTF-8</param-value>
+		</init-param>
+		<init-param>
+				<param-name>forceEncoding</param-name>
+				<param-value>true</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>encodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
 
 </web-app>

@@ -9,4 +9,6 @@ DB SCHEMAS : backoffice_se
 		- Columns : se_Name, VARCHAR(20)
 		- Columns : se_Email, VARCHAR(50)
 		- Columns : seuser_authority, TINYINT(4)
+		- Columns : enabled, CHAR(1)	Default : 1
+		- Columns : seuser_role, VARCHAR(45)
 
